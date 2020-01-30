@@ -10,8 +10,8 @@ public class MyMath {
     public static double DegreeToRadiant(double degree){
         return degree * 2 * Math.PI / 360;
     }
-    public static double RadiantToDegree(double degree){
-        return degree 
+    public static double RadiantToDegree(double rad){
+        return rad * (100 / Math.PI);
     }
 
 }
