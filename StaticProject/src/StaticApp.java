@@ -8,6 +8,10 @@ public class StaticApp {
         // verwenden der nicht statischen Konstante MyPI_ns
         MyMath myM = new MyMath();
         System.out.printf("MyPI_ns = %.2f\n", myM.MyPI_ns);
+
+        // Die nicht statische Methode muss über die Instanzenvariable myM aufgerufen werden
+        System.out.println(myM.nonStatic());
+
     }
 
 }
