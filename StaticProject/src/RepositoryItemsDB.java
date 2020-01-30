@@ -1,6 +1,6 @@
 import java.util.List;
 
-public class RepositoryItemDB implements RepositoryItems {
+public class RepositoryItemsDB implements RepositoryItems {
 
     // implementiert eine Klasse ein Interface, so verpflichtet sie sich dazu, dass sie alle Methoden ausprogrammiert
     // WICHTIG: es können beliebig viele weitere Members (Felder, Methoden) vorhanden sein
