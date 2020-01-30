@@ -2,7 +2,6 @@ public class MyMath {
 
     // Test Conflict
 
-
     // Test Conflict Confl
 
     // WICHTIG
