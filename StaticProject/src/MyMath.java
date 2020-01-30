@@ -1,6 +1,6 @@
 public class MyMath {
 
-    // Test Conflict Conflict
+    // Test Conflict Confl
 
     // WICHTIG
     /*
