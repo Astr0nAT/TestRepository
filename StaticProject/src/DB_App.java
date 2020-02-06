@@ -2,7 +2,7 @@ import java.util.List;
 
 public class DB_App {
 
-    static RepositoryItems dbItems = new RepositoryItemsDB();
+    static RepositoryItems dbItems = new RepositoryItemsFile();
 
     public static void main(String[] args) {
         dbItems.Insert(new Item());
@@ -14,7 +14,5 @@ public class DB_App {
 
     // WICHTIG: Interface als Instanzentypm verwenden
     // hinter new wird die benötigte Klasse verwendet
-
-
 
 }
