@@ -37,7 +37,7 @@ public class RepositoryItemsDB implements RepositoryItems {
 
     @Override
     public Item SearchByPrimaryKey(int primaryKey) {
-        System.out.println("Artikelliste aus DB - ID");
+        System.out.println("Artikel aus DB - ID");
         return null;
     }
 }
