@@ -1,9 +1,5 @@
 public class MyMath {
 
-    // Test conflict - remote
-
-    // Test conflict - local
-
     // WICHTIG
     /*
     statische Members (Felder und Methoden) können im Hauptprogramm oder in anderen Klassen ohne erzeugung einer Instanz
