@@ -2,6 +2,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.*;
+import java.util.List;
 import java.util.Scanner;
 
 public class Exceptions_Filemanagement {
@@ -18,7 +19,8 @@ public class Exceptions_Filemanagement {
                 Codezeile 3
                 usw.
             }
-            catch(<Exceptionklasse1> var){ => es können beliebig viele catch-Blöcke vorhanden sein
+            catch(<Exceptionklasse1> var){
+                => es können beliebig viele catch-Blöcke vorhanden sein
                 Meldung ausgeben
                 Loggen
             }
@@ -59,7 +61,7 @@ public class Exceptions_Filemanagement {
     public static void main(String[] args) {
 
         char choice;
-        String filename;
+        String filename = null;
         BufferedWriter writer = null;
         String text;
 
@@ -80,7 +82,7 @@ public class Exceptions_Filemanagement {
                     // Datei wurde geöffnet (Menüpunkt 'ö')
                     if(writer != null){
                         do {
-                            System.out.print("Ihr Text <end> ... beenden: ");
+                            System.out.print("Ihr Text (end zum Beenden): ");
                             text = reader.nextLine();
                             if(!text.toLowerCase().equals("end")){
                                 appendText(text, writer);
@@ -88,22 +90,42 @@ public class Exceptions_Filemanagement {
                         }
                         while(!text.toLowerCase().equals("end"));
                     }
+                    else{
+                        if((filename != null) && (filename.isEmpty())){
+                            do {
+                                System.out.print("Ihr Text (end zum Beenden): ");
+                                text = reader.nextLine();
+                                if(!text.toLowerCase().equals("end")){
+                                    appendText(text, filename);
+                                }
+                            }while(!text.toLowerCase().equals("end"));
+                        }
+                        else{
+                            System.out.println("Keine Datei erzeugt bzw. keine Datei geöffnet!");
+                        }
+                    }
                     break;
                 case 'a':
+                    printContent(filename);
                     break;
                 case 'z':
+                    printAllLines(filename);
                     break;
                 case 'l':
+                    deleteFile(filename);
+                    break;
+                case 'c':
+                    createDirectory(reader.nextLine());
                     break;
                 case 'b':
                     System.out.println("Programm wird beendet");
                     break;
                 default:
                     System.out.println("Falsche Taste gedrückt");
+                    break;
             }
         }
         while(choice != 'b');
-
     }
 
     private static char Menu(){
@@ -153,6 +175,51 @@ public class Exceptions_Filemanagement {
         catch(IOException e){
             System.out.println("Fehler: Text konnte nicht in der Datei abgelegt werden!");
         }
+    }
+
+    private static void appendText(String text, String filename){
+        try{
+            text += "\n";
+            Files.write(Paths.get(filename), text.getBytes(), StandardOpenOption.APPEND);
+        }
+        catch(IOException e){
+            System.out.println("Fehler: Text konnte nicht in der Datei abgelegt werden!");
+        }
+    }
+
+    private static void printContent(String filename){
+        try{
+            System.out.println(Files.readString(Paths.get(filename)));
+        }
+        catch(IOException e){
+            System.out.println("Fehler: Datei existiert nicht");
+        }
+    }
+
+    private static void printAllLines(String filename) {
+        try{
+            List<String> lines = Files.readAllLines(Paths.get(filename));
+            for(int i = 0; i < lines.size(); i++){
+                System.out.println((i + 1) + ". Zeile: " + lines.toArray()[i]);
+            }
+        }
+        catch(IOException e){
+            System.out.println("Datei existiert nicht!");
+        }
+    }
+
+    private static void deleteFile(String filename) {
+        try{
+            Files.delete(Paths.get(filename));
+            System.out.println("Datei gelöscht!");
+        }
+        catch(IOException e){
+            System.out.println("Datei existiert nicht!");
+        }
+    }
+
+    private static void createDirectory(String path){
+
     }
 
 }
