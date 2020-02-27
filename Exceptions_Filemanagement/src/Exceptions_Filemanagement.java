@@ -91,7 +91,7 @@ public class Exceptions_Filemanagement {
                         while(!text.toLowerCase().equals("end"));
                     }
                     else{
-                        if((filename != null) && (filename.isEmpty())){
+                        if((filename != null) && (!filename.isEmpty())){
                             do {
                                 System.out.print("Ihr Text (end zum Beenden): ");
                                 text = reader.nextLine();
@@ -219,7 +219,11 @@ public class Exceptions_Filemanagement {
     }
 
     private static void createDirectory(String path){
-
+        try{
+            Files.createDirectory(Paths.get(path));
+        } catch (IOException e) {
+            System.out.println("Cannot create directory!");
+        }
     }
 
 }
